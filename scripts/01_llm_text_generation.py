@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LLM Text Generation with Mistral-7B and Llama-3-8B
+LLM Text Generation with Mistral-7B, Llama-3.1-8B, and more
 Uses 4-bit quantization to fit in 16GB VRAM
 """
 
@@ -13,7 +13,8 @@ def load_model(model_name="mistral"):
 
     models = {
         "mistral": "mistralai/Mistral-7B-Instruct-v0.3",
-        "llama": "NousResearch/Meta-Llama-3-8B-Instruct",
+        "llama": "meta-llama/Llama-3.1-8B-Instruct",  # Official Meta (requires HF approval)
+        "llama-nous": "NousResearch/Meta-Llama-3-8B-Instruct",  # Community version (no approval needed)
         "gpt2": "gpt2",
     }
 

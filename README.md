@@ -24,8 +24,8 @@ python scripts/02_image_generation.py
 
 | # | Category | Script | Models | VRAM |
 |---|----------|--------|--------|------|
-| 01 | LLM Text Generation | `01_llm_text_generation.py` | Mistral-7B, Llama-3-8B, GPT-2 | 4-6 GB |
-| 02 | Image Generation | `02_image_generation.py` | SDXL, SDXL Turbo, Playground v2.5 | 6.5 GB |
+| 01 | LLM Text Generation | `01_llm_text_generation.py` | Mistral-7B, Llama-3.1-8B, GPT-2 | 4-6 GB |
+| 02 | Image Generation | `02_image_generation.py` | SDXL, SD3, FLUX.1, Playground v2.5 | 6.5 GB |
 | 03 | Video Generation | `03_video_generation.py` | Stable Video Diffusion | CPU offload |
 | 04 | Music Generation | `04_music_generation.py` | MusicGen Small/Medium | 2-7.5 GB |
 | 05 | Speech-to-Text | `05_speech_to_text.py` | Whisper Large-v3 | 2.9 GB |
@@ -66,6 +66,8 @@ generate_image_playground(pipe, "A dragon flying over mountains", output_name="d
 - `load_sdxl_turbo()` - Fast (4 steps, 512x512)
 - `load_sdxl()` - High quality (30 steps, 1024x1024)
 - `load_playground()` - Aesthetic (30 steps, 1024x1024)
+- `load_sd3()` - SD3 Medium (28 steps, 1024x1024) *requires HF approval*
+- `load_flux()` - FLUX.1-schnell (4 steps, 512x512) *requires HF approval*
 
 ### 03. Video Generation
 
