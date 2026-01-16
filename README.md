@@ -35,6 +35,7 @@ python scripts/02_image_generation.py
 | 09 | Depth Estimation | `09_depth_estimation.py` | Depth Anything V2 | 0.63 GB |
 | 10 | Segmentation | `10_segment_anything.py` | SAM (Segment Anything) | 2.45 GB |
 | 11 | Inpainting & Background | `11_inpainting_background.py` | SD 1.5/SDXL Inpaint, rembg | 2-6.5 GB |
+| 12 | Image Upscaling | `12_image_upscaling.py` | Swin2SR, SD x4 Upscaler | 0.05-1.6 GB |
 
 ## Script Details
 
@@ -211,6 +212,29 @@ result = inpaint(pipe, "image.png", mask, prompt="a golden dragon")
 from scripts.11_inpainting_background import outpaint
 
 result = outpaint(pipe, "image.png", direction="right", prompt="forest landscape")
+```
+
+### 12. Image Upscaling / Super Resolution
+
+Enhance image resolution with AI upscalers.
+
+```python
+# Swin2SR (fast, transformer-based)
+from scripts.12_image_upscaling import load_swin2sr, upscale_swin2sr
+
+model, processor = load_swin2sr(scale=4)  # 4x upscaling
+result = upscale_swin2sr(model, processor, "low_res.png", max_size=512)
+
+# SD x4 Upscaler (diffusion-based, high quality)
+from scripts.12_image_upscaling import load_sd_upscaler, upscale_sd
+
+pipe = load_sd_upscaler()
+result = upscale_sd(pipe, "image.png", prompt="detailed photo, sharp")
+
+# Tiled upscaling for large images
+from scripts.12_image_upscaling import upscale_tiled
+
+result = upscale_tiled(model, processor, "large_image.png", tile_size=256)
 ```
 
 ## Output Directories
