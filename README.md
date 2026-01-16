@@ -34,6 +34,7 @@ python scripts/02_image_generation.py
 | 08 | Object Detection | `08_object_detection.py` | YOLOv8 (detect/segment/pose) | ~1 GB |
 | 09 | Depth Estimation | `09_depth_estimation.py` | Depth Anything V2 | 0.63 GB |
 | 10 | Segmentation | `10_segment_anything.py` | SAM (Segment Anything) | 2.45 GB |
+| 11 | Inpainting & Background | `11_inpainting_background.py` | SD 1.5/SDXL Inpaint, rembg | 2-6.5 GB |
 
 ## Script Details
 
@@ -183,6 +184,33 @@ from scripts.10_segment_anything import load_sam, segment_with_points
 
 model, processor = load_sam()
 masks, image = segment_with_points(model, processor, "image.png", points=[[100, 200]])
+```
+
+### 11. Image Inpainting & Background Removal
+
+Edit image regions with AI and remove backgrounds.
+
+```python
+# Background removal
+from scripts.11_inpainting_background import remove_background
+
+output_img = remove_background("photo.jpg", "photo_nobg.png")
+
+# Inpainting with SD 1.5 (512x512)
+from scripts.11_inpainting_background import load_inpainting_model, inpaint, create_mask_circle
+
+pipe = load_inpainting_model("sd15")
+mask = create_mask_circle((512, 512), radius=100)
+result = inpaint(pipe, "image.png", mask, prompt="a beautiful flower")
+
+# Inpainting with SDXL (1024x1024, higher quality)
+pipe = load_inpainting_model("sdxl")
+result = inpaint(pipe, "image.png", mask, prompt="a golden dragon")
+
+# Outpainting (extend image)
+from scripts.11_inpainting_background import outpaint
+
+result = outpaint(pipe, "image.png", direction="right", prompt="forest landscape")
 ```
 
 ## Output Directories

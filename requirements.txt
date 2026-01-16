@@ -32,6 +32,7 @@ pydub
 # Image processing
 Pillow
 opencv-python
+rembg  # Background removal
 
 # Computer Vision
 ultralytics  # YOLOv8
