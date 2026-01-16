@@ -1,0 +1,29 @@
+#!/bin/bash
+# Activate AI Toolkit environment
+
+echo "Activating AI Toolkit..."
+source ~/pytorch-env/bin/activate
+
+echo ""
+echo "========================================"
+echo "  AI Toolkit - Ready!"
+echo "========================================"
+echo ""
+echo "Available scripts:"
+echo "  python scripts/01_llm_text_generation.py    # Text generation"
+echo "  python scripts/02_image_generation.py       # Image generation"
+echo "  python scripts/03_video_generation.py       # Video generation"
+echo "  python scripts/04_music_generation.py       # Music generation"
+echo "  python scripts/05_speech_to_text.py         # Speech-to-text"
+echo "  python scripts/06_text_to_speech.py         # Text-to-speech"
+echo "  python scripts/07_image_captioning.py       # Image captioning"
+echo "  python scripts/08_object_detection.py       # Object detection"
+echo "  python scripts/09_depth_estimation.py       # Depth estimation"
+echo "  python scripts/10_segment_anything.py       # Segmentation"
+echo ""
+echo "Start Jupyter: jupyter lab"
+echo ""
+echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader)"
+echo "CUDA: $(python -c 'import torch; print(torch.version.cuda)')"
+echo "PyTorch: $(python -c 'import torch; print(torch.__version__)')"
+echo ""

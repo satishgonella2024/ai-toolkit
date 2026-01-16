@@ -1,0 +1,58 @@
+# AI Toolkit Requirements
+# Install with: pip install -r requirements.txt
+
+# Core ML frameworks
+torch>=2.6.0
+torchvision
+torchaudio
+
+# Transformers & HuggingFace
+transformers>=4.40.0
+huggingface_hub
+accelerate
+bitsandbytes
+safetensors
+tokenizers
+sentencepiece
+protobuf
+
+# Diffusion models
+diffusers>=0.27.0
+invisible-watermark
+
+# Audio processing
+librosa
+scipy
+soundfile
+openai-whisper
+parler-tts
+gtts
+pydub
+
+# Image processing
+Pillow
+opencv-python
+
+# Computer Vision
+ultralytics  # YOLOv8
+
+# Visualization
+matplotlib
+numpy
+
+# Jupyter
+jupyter
+jupyterlab
+ipywidgets
+
+# Video
+imageio[ffmpeg]
+
+# Datasets
+datasets
+
+# Utilities
+tqdm
+filelock
+pyyaml
+requests
