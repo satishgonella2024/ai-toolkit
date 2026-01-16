@@ -36,6 +36,7 @@ python scripts/02_image_generation.py
 | 10 | Segmentation | `10_segment_anything.py` | SAM (Segment Anything) | 2.45 GB |
 | 11 | Inpainting & Background | `11_inpainting_background.py` | SD 1.5/SDXL Inpaint, rembg | 2-6.5 GB |
 | 12 | Image Upscaling | `12_image_upscaling.py` | Swin2SR, SD x4 Upscaler | 0.05-1.6 GB |
+| 13 | ControlNet & Img2Img | `13_controlnet_img2img.py` | SDXL ControlNet (Canny, Depth) | 8-9 GB |
 
 ## Script Details
 
@@ -237,6 +238,34 @@ result = upscale_sd(pipe, "image.png", prompt="detailed photo, sharp")
 from scripts.12_image_upscaling import upscale_tiled
 
 result = upscale_tiled(model, processor, "large_image.png", tile_size=256)
+```
+
+### 13. ControlNet & Image-to-Image
+
+Transform images with AI guidance and control signals.
+
+```python
+# Image-to-Image transformation
+from scripts.13_controlnet_img2img import load_img2img, transform_image
+
+pipe = load_img2img()
+result = transform_image(pipe, "photo.png", prompt="oil painting style", strength=0.6)
+
+# ControlNet with Canny edges
+from scripts.13_controlnet_img2img import load_controlnet_canny, image_to_controlnet
+
+pipe = load_controlnet_canny()
+control_img, result = image_to_controlnet(
+    pipe, "photo.png",
+    prompt="cyberpunk city at night",
+    control_type="canny"
+)
+
+# ControlNet with depth map
+from scripts.13_controlnet_img2img import load_controlnet_depth, generate_with_controlnet
+
+pipe = load_controlnet_depth()
+result = generate_with_controlnet(pipe, "depth_map.png", prompt="underwater scene")
 ```
 
 ## Output Directories

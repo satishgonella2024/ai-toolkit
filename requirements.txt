@@ -19,6 +19,7 @@ protobuf
 # Diffusion models
 diffusers>=0.27.0
 invisible-watermark
+controlnet-aux  # ControlNet preprocessors
 
 # Audio processing
 librosa
